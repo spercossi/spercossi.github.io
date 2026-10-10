@@ -451,3 +451,63 @@ main { overflow-x: hidden; overflow-x: clip; }
 .glass-zone--degree .blob--c { left: auto; right: 20%; bottom: -80px; background: var(--violet); opacity: 0.6; }
 .glass .credits { margin-top: 24px; }
 .glass .courses--next { max-width: none; }
+
+/* Contact assistant */
+.chat {
+  max-width: 760px; border-radius: 20px; overflow: hidden;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 24px 70px rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+}
+.chat__head { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.chat__avatar {
+  display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; flex: none;
+  background: linear-gradient(118deg, var(--violet) 0 50%, var(--magenta-deep) 50% 100%);
+  color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: -0.02em;
+}
+.chat__who { display: flex; flex-direction: column; line-height: 1.3; }
+.chat__status { color: var(--cyan); font-size: 0.875rem; display: inline-flex; align-items: center; gap: 6px; }
+.chat__status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+.chat__log { list-style: none; margin: 0; padding: 20px; display: flex; flex-direction: column; gap: 12px; max-height: 380px; min-height: 140px; overflow-y: auto; }
+.chat__msg { display: flex; flex-direction: column; max-width: 85%; }
+.chat__msg--bot { align-self: flex-start; }
+.chat__msg--user { align-self: flex-end; align-items: flex-end; }
+.chat__bubble { padding: 11px 15px; border-radius: 16px; line-height: 1.5; }
+.chat__msg--bot .chat__bubble { background: rgba(13, 14, 30, 0.78); border: 1px solid rgba(255, 255, 255, 0.08); border-bottom-left-radius: 4px; }
+.chat__msg--user .chat__bubble { background: var(--magenta-deep); color: #fff; border-bottom-right-radius: 4px; }
+.chat__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.chat__action { font-size: 0.9375rem; font-weight: 650; text-decoration: none; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--cyan); color: var(--cyan); }
+.chat__action:hover { background: rgba(46, 221, 235, 0.1); }
+.chat__typing { display: inline-flex; gap: 5px; padding: 4px 2px; }
+.chat__typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: typing 1s infinite ease-in-out; }
+.chat__typing i:nth-child(2) { animation-delay: 0.15s; }
+.chat__typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typing { 0%, 80%, 100% { opacity: 0.3; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+.chat__chips { list-style: none; margin: 0; padding: 0 20px 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chat__chips button {
+  font: inherit; font-size: 0.9375rem; cursor: pointer;
+  background: rgba(13, 14, 30, 0.6); color: var(--soft);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px;
+}
+.chat__chips button:hover { border-color: var(--magenta); color: #fff; }
+.chat__form { display: flex; gap: 10px; padding: 14px 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.chat__input {
+  flex: 1; min-width: 0; font: inherit; color: var(--text);
+  background: rgba(13, 14, 30, 0.7); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px;
+}
+.chat__input::placeholder { color: #7d84ad; }
+.chat__input:focus-visible { outline: 2px solid var(--cyan); outline-offset: 1px; }
+.chat__send {
+  flex: none; width: 46px; border: 0; border-radius: 12px; cursor: pointer;
+  background: var(--magenta); color: #fff; font-size: 1.25rem; font-weight: 700;
+}
+.chat__send:hover { background: var(--magenta-deep); }
+.chat__note { margin: 0; padding: 0 20px 16px; color: #7d84ad; font-size: 0.875rem; }
+.footer__alt { margin: 28px 0 0; color: var(--muted); }
+.footer .links { margin-top: 10px; }
+@media (prefers-reduced-motion: reduce) { .chat__typing i { animation: none; } }
+@media (max-width: 760px) {
+  .chat__log, .chat__chips, .chat__form, .chat__note { padding-left: 14px; padding-right: 14px; }
+  .chat__msg { max-width: 92%; }
+}

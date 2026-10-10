@@ -18,6 +18,10 @@ Tutti i testi e i dati sono in `data.js`. Non serve toccare gli altri file.
 - **Data di aggiornamento:** cambia `aggiornato` (formato `AAAA-MM-GG`).
 - **CV:** sostituisci `cv/CV-Simone-Percossi.pdf` con la nuova versione, tenendo lo stesso nome.
 
+## Assistente nei contatti
+
+L'assistente in fondo alla pagina risponde usando `assistente.js`: lì trovi gli argomenti, le parole chiave, le domande suggerite e le risposte, in italiano e inglese. Oggi le risposte sono preimpostate; lo stesso file potrà fare da base di conoscenza quando l'assistente userà un modello AI.
+
 ## Pubblicarla online (per il link nel CV)
 
 Il codice resta sul PC; GitHub Pages ne pubblica una copia gratis.
@@ -36,6 +40,8 @@ Per aggiornarla: modifichi i file sul PC, poi fai commit e push. Il sito si aggi
 | `index.html` | Struttura della pagina |
 | `data.js` | Tutti i testi e i dati, in italiano e inglese |
 | `app.js` | Costruisce la pagina a partire da `data.js` |
+| `assistente.js` | Cosa sa l'assistente dei contatti |
+| `chat.js` | Funzionamento dell'assistente |
 | `style.css` | Grafica |
 | `fonts/` | Font Instrument Sans (licenza SIL Open Font License) |
 | `cv/` | CV in PDF scaricabile dalla pagina |

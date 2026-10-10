@@ -9,7 +9,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="style.css?v=202610102012">
+  <link rel="stylesheet" href="style.css?v=202610102018">
 </head>
 <body>
   <a class="skip" href="#main" data-t="skip"></a>
@@ -136,11 +136,29 @@
 
   <footer class="wrap footer" id="contatti">
     <h2 data-t="contactTitle"></h2>
+
+    <div class="chat" id="chat">
+      <div class="chat__head">
+        <span class="chat__avatar" aria-hidden="true">SP</span>
+        <span class="chat__who"><strong class="chat__name"></strong><span class="chat__status"></span></span>
+      </div>
+      <ol class="chat__log" role="log" aria-live="polite"></ol>
+      <ul class="chat__chips"></ul>
+      <form class="chat__form" autocomplete="off">
+        <input class="chat__input" type="text" maxlength="200">
+        <button class="chat__send" type="submit"><span aria-hidden="true">↑</span></button>
+      </form>
+      <p class="chat__note"></p>
+    </div>
+
+    <p class="footer__alt" data-t="contactAlt"></p>
     <p class="links" id="link-footer"></p>
     <p class="note" id="aggiornato"></p>
   </footer>
 
-  <script src="data.js?v=202610102012"></script>
-  <script src="app.js?v=202610102012"></script>
+  <script src="data.js?v=202610102018"></script>
+  <script src="app.js?v=202610102018"></script>
+  <script src="assistente.js?v=202610102018"></script>
+  <script src="chat.js?v=202610102018"></script>
 </body>
 </html>
