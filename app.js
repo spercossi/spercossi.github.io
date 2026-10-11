@@ -298,6 +298,32 @@
 
   render();
   loadStats();
+  trackClicks();
+
+  // Click events, counted only when the counter is loaded (so never for the owner's devices)
+  function track(name, title) {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: name, title: title || name, event: true });
+    }
+  }
+  window.portfolioTrack = track;
+
+  function trackClicks() {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest("a[href]");
+      if (!a) return;
+      var href = a.getAttribute("href"), area = a.closest(".chat") ? "chat-" : "";
+      if (href.indexOf("mailto:") === 0) track(area + "click-email", "Email");
+      else if (href.indexOf("linkedin.com") >= 0) track(area + "click-linkedin", "LinkedIn");
+      else if (/\.pdf$/i.test(href)) track(area + "click-cv", "CV PDF");
+      else if (href.indexOf("github.com/") >= 0) track("click-codice-" + href.split("/").pop().toLowerCase(), "Codice: " + href.split("/").pop());
+    });
+    var more = document.querySelector(".more");
+    if (more) more.addEventListener("toggle", function () { if (more.open) track("apri-come-funziona", "Apre Come funziona"); });
+    document.querySelectorAll("[data-lang]").forEach(function (b) {
+      b.addEventListener("click", function () { track("lingua-" + b.getAttribute("data-lang"), "Lingua " + b.getAttribute("data-lang").toUpperCase()); });
+    });
+  }
 
   // Anonymous page-view counting; the owner's own devices opt out with ?io=1
   function loadStats() {

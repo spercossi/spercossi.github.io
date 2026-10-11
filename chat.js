@@ -83,10 +83,14 @@
     }, reduceMotion ? 0 : 650);
   }
 
-  function ask(text, topic) {
+  function ask(text, topic, chip) {
     if (busy || !text.trim()) return;
     addMessage("user", esc(text.trim()));
-    reply(topic || findTopic(text));
+    var found = topic || findTopic(text);
+    // only the matched topic is counted, never the text the visitor typed
+    if (window.portfolioTrack) window.portfolioTrack("chat-" + (chip ? "suggerita-" : "scritta-") + (found ? found.id : "senza-risposta"),
+      "Chat: " + (found ? found.id : "senza risposta") + (chip ? " (suggerita)" : " (scritta)"));
+    reply(found);
   }
 
   function reset() {
@@ -107,7 +111,7 @@
     var b = e.target.closest("button[data-topic]");
     if (!b) return;
     var topic = A.argomenti.filter(function (x) { return x.id === b.getAttribute("data-topic"); })[0];
-    ask(b.textContent, topic);
+    ask(b.textContent, topic, true);
   });
   form.addEventListener("submit", function (e) {
     e.preventDefault();
