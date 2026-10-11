@@ -148,10 +148,10 @@ window.PORTFOLIO = {
 
   // Colori delle aree (palette ispirata a EPICODE)
   aree: {
-    ai:    { it: "AI e dati",            en: "AI & data",              colore: "#D88C9A" },
-    sw:    { it: "Sviluppo software",    en: "Software development",   colore: "#A6F4DC" },
-    cloud: { it: "Cloud, reti e sicurezza", en: "Cloud, networks & security", colore: "#0E7C7B" },
-    base:  { it: "Fondamenti e metodo",  en: "Foundations & method",   colore: "#FFD639" }
+    ai:    { it: "AI e dati",            en: "AI & data",              colore: "#A5B4FC" },
+    sw:    { it: "Sviluppo software",    en: "Software development",   colore: "#7CE7F2" },
+    cloud: { it: "Cloud, reti e sicurezza", en: "Cloud, networks & security", colore: "#1F6FEB" },
+    base:  { it: "Fondamenti e metodo",  en: "Foundations & method",   colore: "#F472D0" }
   },
 
   // Esami superati. "prova" usa le chiavi: progetto, scritto, scrittoColloquio, test.
