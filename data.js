@@ -12,6 +12,12 @@ window.PORTFOLIO = {
   aggiornato: "2026-10-10",
   mostraVoti: true, // metti false per nascondere i voti dei singoli esami
 
+  // Statistiche di visita (GoatCounter, senza cookie). Scrivi qui il codice del tuo account,
+  // es. "spercossi" se la tua pagina statistiche è spercossi.goatcounter.com. Vuoto = disattivate.
+  // Per non contare le tue visite: apri una volta il sito con ?io=1 alla fine dell'indirizzo
+  // da ogni dispositivo che usi (computer, telefono). Per tornare a essere contato: ?io=0
+  statistiche: { goatcounter: "" },
+
   contatti: {
     email: "s.percossi@gmail.com",
     linkedin: "https://www.linkedin.com/in/simone-percossi/",

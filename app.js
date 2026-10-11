@@ -297,4 +297,22 @@
   });
 
   render();
+  loadStats();
+
+  // Anonymous page-view counting; the owner's own devices opt out with ?io=1
+  function loadStats() {
+    var code = D.statistiche && D.statistiche.goatcounter;
+    var flag = new URLSearchParams(window.location.search).get("io");
+    try {
+      if (flag === "1") window.localStorage.setItem("portfolio-io", "1");
+      if (flag === "0") window.localStorage.removeItem("portfolio-io");
+      if (window.localStorage.getItem("portfolio-io") === "1") return;
+    } catch (e) { /* storage blocked: count the visit */ }
+    if (!code || window.location.protocol === "file:") return;
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://gc.zgo.at/count.js";
+    s.setAttribute("data-goatcounter", "https://" + code + ".goatcounter.com/count");
+    document.body.appendChild(s);
+  }
 })();
