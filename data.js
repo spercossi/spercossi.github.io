@@ -16,7 +16,7 @@ window.PORTFOLIO = {
   // es. "spercossi" se la tua pagina statistiche è spercossi.goatcounter.com. Vuoto = disattivate.
   // Per non contare le tue visite: apri una volta il sito con ?io=1 alla fine dell'indirizzo
   // da ogni dispositivo che usi (computer, telefono). Per tornare a essere contato: ?io=0
-  statistiche: { goatcounter: "" },
+  statistiche: { goatcounter: "spercossi" },
 
   contatti: {
     email: "s.percossi@gmail.com",
