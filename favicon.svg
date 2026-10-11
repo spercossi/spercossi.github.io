@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs><clipPath id="r"><rect width="64" height="64" rx="14"/></clipPath></defs>
   <g clip-path="url(#r)">
-    <rect width="64" height="64" fill="#3b1fd1"/>
-    <polygon points="40,0 64,0 64,64 18,64" fill="#b8169c"/>
+    <rect width="64" height="64" fill="#0E7C7B"/>
+    <polygon points="40,0 64,0 64,64 18,64" fill="#0A5B5A"/>
   </g>
   <text x="32" y="43" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="29" letter-spacing="-1" fill="#ffffff">SP</text>
 </svg>
