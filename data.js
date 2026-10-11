@@ -213,7 +213,7 @@ window.PORTFOLIO = {
       programma: ["Information and network security", "Web application security", "Cryptography and data protection", "Malware and endpoint security", "Incident response and forensics"] },
     { nome: "IoT Development", ects: 6, area: "sw",
       programma: ["IoT programming", "IoT connectivity", "IoT project development", "Security and ethics in IoT"] },
-    { nome: { it: "Tesi di laurea", en: "Final dissertation" }, ects: 24, programma: [] }
+    { nome: { it: "Tesi di laurea", en: "Final dissertation" }, ects: 24, tesi: true, programma: [] }
   ],
 
   // Scheda in alto a destra. I crediti si calcolano da soli.

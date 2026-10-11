@@ -93,7 +93,6 @@
     var u = UI[lang()];
     root.querySelector(".chat__name").textContent = t(A.nome);
     root.querySelector(".chat__status").textContent = u.status;
-    root.querySelector(".chat__note").textContent = t(A.nota);
     input.placeholder = u.placeholder;
     input.setAttribute("aria-label", u.placeholder);
     root.querySelector(".chat__send").setAttribute("aria-label", u.send);

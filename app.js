@@ -31,6 +31,9 @@
       xp: function (d, t) { return d + " / " + t + " crediti"; },
       fiberLabel: function (d, t) { return d + " crediti ECTS conseguiti su " + t; },
       remaining: "Da sostenere",
+      left: function (n) { return "mancano " + (n === 1 ? "1 esame" : n + " esami") + " e la tesi"; },
+      barDone: "conseguiti", barExams: function (n) { return n + " esami"; }, barThesis: "Tesi",
+      legendExams: "Esami del terzo anno", legendThesis: "Tesi di laurea",
       grade: "voto", compulsory: "Obbligatorio",
       examsCount: function (n) { return n === 1 ? "1 esame" : n + " esami"; },
       exam: { progetto: "Progetto e colloquio", scritto: "Prova scritta", scrittoColloquio: "Scritto e colloquio", test: "Test a risposta multipla" },
@@ -66,6 +69,9 @@
       xp: function (d, t) { return d + " / " + t + " credits"; },
       fiberLabel: function (d, t) { return d + " of " + t + " ECTS credits earned"; },
       remaining: "Still to take",
+      left: function (n) { return (n === 1 ? "1 exam" : n + " exams") + " and the thesis to go"; },
+      barDone: "earned", barExams: function (n) { return n + " exams"; }, barThesis: "Thesis",
+      legendExams: "Year three exams", legendThesis: "Final dissertation",
       grade: "grade", compulsory: "Compulsory",
       examsCount: function (n) { return n === 1 ? "1 exam" : n + " exams"; },
       exam: { progetto: "Project and interview", scritto: "Written exam", scrittoColloquio: "Written exam and interview", test: "Multiple-choice test" },
@@ -237,7 +243,12 @@
     var pct = Math.round((S.done / total) * 1000) / 10;
 
     $("laurea-nome").innerHTML = esc(t(L.nome)) + '<br><span class="muted">' + esc(L.ateneo) + " · " + esc(t(L.dettaglio)) + "</span>";
-    $("crediti-sintesi").innerHTML = "<span>" + u.credits(S.done, total, num(pct, pct % 1 ? 1 : 0)) + "</span>" +
+    var thesis = D.daSostenere.filter(function (e) { return e.tesi; });
+    var exams = D.daSostenere.filter(function (e) { return !e.tesi; });
+    var thesisEcts = thesis.reduce(function (s, e) { return s + e.ects; }, 0);
+    var examsEcts = exams.reduce(function (s, e) { return s + e.ects; }, 0);
+    $("crediti-sintesi").innerHTML = "<span>" + u.credits(S.done, total, num(pct, pct % 1 ? 1 : 0)) +
+      (exams.length && thesis.length ? ' <span class="muted">· ' + u.left(exams.length) + "</span>" : "") + "</span>" +
       (D.mostraVoti ? "<span>" + u.average(num(S.avg, 1)) + "</span>" : "");
 
     var order = Object.keys(D.aree);
@@ -249,11 +260,19 @@
     fiber.setAttribute("aria-label", u.fiberLabel(S.done, total));
     fiber.innerHTML = sorted.map(function (e) {
       return '<span style="flex-grow:' + e.ects + ";background:" + D.aree[e.area].colore + '" title="' + esc(e.nome) + " · " + e.ects + ' ECTS"></span>';
-    }).join("") + '<span class="fiber__rest" style="flex-grow:' + (total - S.done) + '" title="' + esc(u.remaining) + '"></span>';
+    }).join("") +
+      (examsEcts ? '<span class="fiber__rest" style="flex-grow:' + examsEcts + '" title="' + esc(u.legendExams) + " · " + examsEcts + ' ECTS"></span>' : "") +
+      (thesisEcts ? '<span class="fiber__thesis" style="flex-grow:' + thesisEcts + '" title="' + esc(u.legendThesis) + " · " + thesisEcts + ' ECTS"></span>' : "");
+    $("fibra-etichette").innerHTML =
+      '<span style="flex:' + S.done + ' 1 0">' + S.done + " ECTS " + u.barDone + "</span>" +
+      (examsEcts ? '<span class="is-exams" style="flex:' + examsEcts + ' 1 0">' + u.barExams(exams.length) + "</span>" : "") +
+      (thesisEcts ? '<span class="is-thesis" style="flex:' + thesisEcts + ' 1 0">' + u.barThesis + "</span>" : "");
 
     $("legenda").innerHTML = order.map(function (k) {
       return '<li><span class="dot" style="background:' + D.aree[k].colore + '"></span>' + esc(t(D.aree[k])) + ' <span class="muted">' + (S.byArea[k] || 0) + " ECTS</span></li>";
-    }).join("") + '<li><span class="dot dot--rest"></span>' + esc(u.remaining) + ' <span class="muted">' + (total - S.done) + " ECTS</span></li>";
+    }).join("") +
+      (examsEcts ? '<li><span class="dot dot--rest"></span>' + esc(u.legendExams) + ' <span class="muted">' + examsEcts + " ECTS</span></li>" : "") +
+      (thesisEcts ? '<li><span class="dot dot--thesis"></span>' + esc(u.legendThesis) + ' <span class="muted">' + thesisEcts + " ECTS</span></li>" : "");
 
     $("aree").innerHTML = order.map(function (k) {
       var list = sorted.filter(function (e) { return e.area === k; });

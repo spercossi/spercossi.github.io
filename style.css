@@ -250,9 +250,9 @@ p { margin: 0 0 1em; }
 .credits { margin: 28px 0 0; }
 .credits__summary { display: flex; flex-wrap: wrap; gap: 6px 36px; font-size: 1.1875rem; margin: 0; }
 .credits__summary strong { color: #fff; }
-.fiber { display: flex; gap: 3px; height: 20px; margin: 16px 0; border-radius: 10px; overflow: hidden; }
+.fiber { display: flex; gap: 3px; height: 20px; margin: 16px 0 8px; border-radius: 10px; overflow: hidden; }
 .fiber span { min-width: 3px; }
-.fiber .fiber__rest { background: repeating-linear-gradient(135deg, #3a3f6e 0 3px, transparent 3px 8px); box-shadow: inset 0 0 0 1px #3a3f6e; border-radius: 0 10px 10px 0; }
+.fiber .fiber__rest { background: repeating-linear-gradient(135deg, #3a3f6e 0 3px, transparent 3px 8px); box-shadow: inset 0 0 0 1px #3a3f6e; }
 .legend { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 1rem; }
 .dot { display: inline-block; flex: none; width: 12px; height: 12px; border-radius: 50%; margin-right: 10px; }
 .dot--rest { background: transparent; box-shadow: inset 0 0 0 2px #5a6090; }
@@ -511,3 +511,16 @@ main { overflow-x: hidden; overflow-x: clip; }
   .chat__log, .chat__chips, .chat__form, .chat__note { padding-left: 14px; padding-right: 14px; }
   .chat__msg { max-width: 92%; }
 }
+
+/* Thesis: the last stretch of the degree bar */
+.fiber .fiber__thesis {
+  border-radius: 0 10px 10px 0;
+  background: repeating-linear-gradient(135deg, rgba(228, 63, 196, 0.55) 0 3px, transparent 3px 8px);
+  box-shadow: inset 0 0 0 2px var(--magenta);
+}
+.fiber-labels { display: flex; gap: 3px; margin-bottom: 16px; font-size: 0.9375rem; color: var(--muted); }
+.fiber-labels span { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fiber-labels span:first-child { color: var(--soft); }
+.fiber-labels .is-thesis { color: var(--magenta); font-weight: 650; text-align: center; }
+.fiber-labels .is-exams { text-align: center; }
+.dot--thesis { background: transparent; box-shadow: inset 0 0 0 2px var(--magenta); }
