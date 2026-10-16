@@ -329,7 +329,16 @@ p { margin: 0 0 1em; }
   .strengths, .split, .areas, .compare { grid-template-columns: 1fr; }
   .panel, .tile, .model { padding: 18px; }
   .courses--next { padding: 4px 16px; }
-  .area__head { padding: 16px 18px; flex-wrap: wrap; }
+  .area__head { padding: 16px 18px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; row-gap: 4px; }
+  .area__head .dot { grid-column: 1; grid-row: 1; }
+  .area__name { grid-column: 2; grid-row: 1; }
+  .area__meta { grid-column: 2; grid-row: 2; white-space: normal; }
+  .area__head::after { grid-column: 3; grid-row: 1; }
+  .courses--next summary, .courses--next .course__row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; row-gap: 6px; }
+  .courses--next .dot { grid-column: 1; grid-row: 1; }
+  .courses--next .course__name { grid-column: 2; grid-row: 1; }
+  .courses--next .course__meta { grid-column: 2; grid-row: 2; justify-self: start; flex-wrap: wrap; white-space: normal; gap: 10px; }
+  .courses--next summary::after { grid-column: 3; grid-row: 1; }
   .area > .courses { padding: 4px 18px 10px; }
   .card-player__stats dd { font-size: 2.125rem; }
 }

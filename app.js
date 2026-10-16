@@ -280,7 +280,7 @@
       return '<details class="area panel"><summary class="area__head">' +
         '<span class="dot" style="background:' + D.aree[k].colore + '"></span>' +
         '<span class="area__name">' + esc(t(D.aree[k])) + "</span>" +
-        '<span class="area__meta">' + u.examsCount(list.length) + " · " + (S.byArea[k] || 0) + " ECTS</span>" +
+        '<span class="area__meta">' + u.examsCount(list.length) + " · " + (S.byArea[k] || 0) + "\u00a0ECTS</span>" +
         "</summary>" +
         '<ul class="courses">' + list.map(function (e) { return courseItem(e, u, true); }).join("") + "</ul></details>";
     }).join("");
